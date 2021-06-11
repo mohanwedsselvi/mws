@@ -824,6 +824,7 @@ var x = setInterval(function() {
 <script>
 // Set the date we're counting down to
 var countDownDate1 = new Date("Sep 9, 2021 07:30:00").getTime();
+var ROver1 = new Date("sep 9, 2021 09:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -833,6 +834,7 @@ var x = setInterval(function() {
 
   // Find the distance between now and the count down date
   var distance1 = countDownDate1 - now;
+  var RDistance1 = ROver1 - now;
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance1 / (1000 * 60 * 60 * 24));
@@ -845,7 +847,12 @@ var x = setInterval(function() {
   + minutes + "M " + seconds + "S ";
 
   // If the count down is finished, write some text
-  if (distance1 < 0) {
+  if (distance1 < 0 && RDistance1 > 0) {
+    clearInterval(x);
+    document.getElementById("demo1").innerHTML = "Going on";
+  }
+     // If the count down is finished, write some text
+  if (RDistance1 < 0) {
     clearInterval(x);
     document.getElementById("demo1").innerHTML = "Over";
   }
